@@ -32,11 +32,13 @@ def search_post():
 
 
 @app.route("/users/<username>")
-def search_user(username):
+def search_all_users(username):
     posts =search_user(username)
+    if not posts:
+        abort(404)
     return render_template("user-feed.html", posts=posts)
 
 
-
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 
