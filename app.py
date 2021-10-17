@@ -21,13 +21,14 @@ def posts(postid):
 def search_post():
     posts = get_posts()
     word = request.args.get('s')
+    if not word:
+        abort(400)
     list_posts = []
     for post in posts:
         if word in post["content"]:
             list_posts.append(post)
-    post_count=len(list_posts)
 
-    return render_template("search.html", posts=list_posts, post_count=post_count)
+    return render_template("search.html", posts=list_posts)
 
 
 @app.route("/users/<username>")
@@ -37,5 +38,5 @@ def search_user(username):
 
 
 
-app.run()
+app.run(debug=True)
 

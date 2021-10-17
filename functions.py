@@ -5,6 +5,7 @@ from flask import Flask,request
 DATA_PATH = "data/data.json"
 COMMENTS = "data/comments.json"
 
+
 def read_json(filename):
     with open(filename,'r', encoding="utf-8") as f:
         return json.load(f)
@@ -28,6 +29,7 @@ def get_posts():
         results.append(new_post)
     return results
 
+
 def get_post(postid):
     posts= read_json(DATA_PATH)
     for post in posts:
@@ -37,9 +39,7 @@ def get_post(postid):
 
 def list_c(postid):
     comments=read_json(COMMENTS)
-    posts= read_json(DATA_PATH)
     new_commets= []
-
     for comment in comments:
         if comment["post_id"] == postid:
             new_d = {}
@@ -53,6 +53,6 @@ def search_user(username):
     posts = read_json(DATA_PATH)
     new_posts =[]
     for post in posts:
-        if post["poster_name"]== username:
+        if post["poster_name"]==username:
             new_posts.append(post)
     return new_posts
