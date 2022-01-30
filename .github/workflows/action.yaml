@@ -10,5 +10,5 @@ jobs:
         run: docker build -t marla4/test_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       - name: docker login
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-      - name: docker puch
-        run: docker puch marla4/test_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+      - name: docker push
+        run: docker push marla4/test_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
