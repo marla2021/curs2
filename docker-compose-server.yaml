@@ -4,3 +4,6 @@ services:
     image: marla4/test_1:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
       - 8080:80
+    volumes:
+      - ./data:/code/data
+      - ./docker_config.py:/code/config.py
