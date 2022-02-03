@@ -5,5 +5,5 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./data:/code/data
+      - ./data:/code/data/data.json
       - ./docker_config.py:/code/config.py
