@@ -25,13 +25,16 @@ jobs:
           mkdir deploy
           cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
           cat config.py | envsubst > deploy/docker_config.py
+          cat data/data.json | envsubst > deploy/data.json
+          cat data/bookmarks.json | envsubst > deploy/bookmarks.json
+          cat data/comments.json | envsubst > deploy/comments.json
       - name: clone files to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          source: "deploy/docker-compose.yaml,deploy/docker_config.py,data,static,templates"
+          source: "deploy/docker-compose.yaml,deploy/docker_config.py,data.json,bookmarks.json,comments.json"
           target: "flask-app"
           strip_components: 1
       - name: run docker-compose
