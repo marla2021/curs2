@@ -23,7 +23,7 @@ jobs:
       - name: render configsg
         run: |
           mkdir deploy
-          cat docker-compose-service.yaml | envsubst > deploy/docker-compose.yaml
+          cat docker-compose-server.yaml | envsubst > deploy/docker-compose.yaml
           cat config.py | envsubst > deploy/docker_config.py
       - name: clone files to server
         uses: appleboy/scp-action@master
