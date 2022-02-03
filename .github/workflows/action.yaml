@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: clone code
         uses: actions/checkout@v2
-      - name: render configs
+      - name: render configsg
         run: |
           mkdir deploy
           cat docker-compose-service.yaml | envsubst > deploy/docker-compose.yaml
@@ -31,6 +31,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          source: "pythonProject1/docker-compose.yaml,pythonProject1/docker_config.py"
+          source: "deploy/docker-compose.yaml,deploy/docker_config.py"
           target: "flask-app"
           strip_components: 1
